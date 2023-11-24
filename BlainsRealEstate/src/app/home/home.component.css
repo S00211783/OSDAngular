@@ -1,0 +1,16 @@
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add spacing between inputs */
+.spacing {
+  margin-right: 10px;
+}
+
+.create-listing-message {
+  margin-top: 20px;
+  text-align: center;
+}

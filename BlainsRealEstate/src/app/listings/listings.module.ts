@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListingsComponent } from './listings/listings.component';
-import { ListingdetailsComponent } from './listingdetails/listingdetails.component';
+import { ListingsFormComponent } from './listings-form/listings-form.component';
+import { ListingsListComponent } from './listings-list/listings-list.component';
+import { ListingsDetailsComponent } from './listings-details/listings-details.component';
 
 
 
 @NgModule({
   declarations: [
-    ListingsComponent,
-    ListingdetailsComponent
+    ListingsFormComponent,
+    ListingsListComponent,
+    ListingsDetailsComponent
   ],
   imports: [
     CommonModule

@@ -1,0 +1,24 @@
+<!-- listings.component.html -->
+<a mat-raised-button color="accent" routerLink="/listings/form">
+  <mat-icon matprefix>add</mat-icon>
+  Add New Listing
+</a>
+
+<div class="container responsive-grid">
+  <div *ngFor='let listing of listings$ | async'>
+    <mat-card color="accent">
+      <mat-card-header>
+        <mat-card-title>{{listing.Address}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>Cost: {{listing.Cost}}</div>
+        <div>Bedrooms: {{listing.Bedrooms}}</div>
+        <div>Description: {{listing.Description}}</div>
+        <div>Type: {{listing.Type}}</div>
+        <div>Location: {{listing.Location}}</div>
+        <!-- You can add more details here -->
+      </mat-card-content>
+      <a mat-button color="primary" [routerLink]="['/listings', listing.ListingId]">VIEW DETAILS</a>
+    </mat-card>
+  </div>
+</div>

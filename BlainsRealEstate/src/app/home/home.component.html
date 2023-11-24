@@ -1,0 +1,29 @@
+<!-- home.component.html -->
+<div class="search-container">
+  <h3 class="spacing">Search Properties</h3>
+
+  <!-- Country Input -->
+  <mat-form-field class="spacing">
+    <input matInput placeholder="Country" [(ngModel)]="country" name="country" />
+  </mat-form-field>
+
+  <!-- Property Type Dropdown -->
+  <mat-form-field class="spacing">
+    <mat-label>Property Type</mat-label>
+    <mat-select [(ngModel)]="selectedType" name="propertyType">
+      <mat-option value="buy">Buy</mat-option>
+      <mat-option value="rent">Rent</mat-option>
+      <mat-option value="any">Any</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Search Button -->
+  <button mat-raised-button color="primary" (click)="search()">Search</button>
+</div>
+
+ <!-- Message with Create Listing Button -->
+ <div class="create-listing-message">
+  <h1>Want to create a listing?</h1>
+  <button mat-raised-button color="accent" (click)="createListing()">Click here</button>
+</div>
+

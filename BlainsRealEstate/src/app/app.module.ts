@@ -5,18 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/material.module';
-import { HomeComponentComponent } from './home-component/home-component.component';
-import { NavBarComponentComponent } from './nav-bar-component/nav-bar-component.component';
-import { SearchBarComponentComponent } from './search-bar-component/search-bar-component.component';
-import { ContactformComponent } from './contactform/contactform.component';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/material.module';
+import { HomeComponent } from './home/home.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponentComponent,
-    NavBarComponentComponent,
-    SearchBarComponentComponent,
-    ContactformComponent
+    HomeComponent
     ],
   imports: [
     BrowserModule,
@@ -24,6 +20,8 @@ import { ContactformComponent } from './contactform/contactform.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
