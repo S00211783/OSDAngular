@@ -5,37 +5,29 @@ import { Listing } from '../listing';
 import { ListingService } from '../listing.service';
 
 @Component({
-  selector: 'app-Listing-form',
-  templateUrl: './Listing-form.component.html',
-  styleUrls: ['./Listing-form.component.css'],
+  selector: 'app-listing-form',
+  templateUrl: './listings-form.component.html',
+  styleUrls: ['./listings-form.component.css'],
 })
 export class ListingFormComponent implements OnInit {
-  ListingForm: FormGroup = new FormGroup({
-    Cost: new FormControl('', [Validators.required]),
-    Address: new FormControl('', [Validators.required]),
-    Bedrooms: new FormControl('', [Validators.required]),
-    Description: new FormControl('', [Validators.required]),
-    Type: new FormControl('', [Validators.required]),
-    Location: new FormControl('', [Validators.required]),
-    AgentId: new FormControl('', [Validators.required]),
-  });
+  listingForm: FormGroup = new FormGroup({});
 
   message: string = '';
 
-  @Input() Listing?: Listing;
+  @Input() listing?: Listing;
 
   constructor(private ListingService: ListingService, private router: Router) {}
 
   ngOnInit(): void {
-    if (this.Listing != null) {
-      this.ListingForm = new FormGroup({
-        Cost: new FormControl(this.Listing?.Cost, [Validators.required]),
-        Address: new FormControl(this.Listing?.Address, [Validators.required]),
-        Bedrooms: new FormControl(this.Listing?.Bedrooms, [Validators.required]),
-        Description: new FormControl(this.Listing?.Description, [Validators.required]),
-        Type: new FormControl(this.Listing?.Type, [Validators.required]),
-        Location: new FormControl(this.Listing?.Location, [Validators.required]),
-        AgentId: new FormControl(this.Listing?.AgentId, [Validators.required]),
+    if (this.listing != null) {
+      this.listingForm = new FormGroup({
+        Cost: new FormControl(this.listing?.Cost, [Validators.required]),
+        Address: new FormControl(this.listing?.Address, [Validators.required]),
+        Bedrooms: new FormControl(this.listing?.Bedrooms, [Validators.required]),
+        Description: new FormControl(this.listing?.Description, [Validators.required]),
+        Type: new FormControl(this.listing?.Type, [Validators.required]),
+        Location: new FormControl(this.listing?.Location, [Validators.required]),
+        AgentId: new FormControl(this.listing?.AgentId, [Validators.required]),
       });
     }
   }
@@ -44,33 +36,33 @@ export class ListingFormComponent implements OnInit {
     console.log('adding new Listing ' + JSON.stringify(newListing));
     this.ListingService.postListing({ ...newListing }).subscribe({
       next: (Listing) => {
-        this.router.navigateByUrl('/Listings/' + Listing._id);
+        this.router.navigateByUrl('/listings/' + Listing._id);
       },
       error: (err) => (this.message = err),
     });
   }
 
   updateListing(Listing: Listing): void {
-    console.log('updating Listing' + JSON.stringify(this.Listing));
+    console.log('updating Listing' + JSON.stringify(this.listing));
     this.ListingService
-      .updateListing(Listing._id, this.ListingForm.value)
+      .updateListing(Listing._id, this.listingForm.value)
       .subscribe({
         next: (Listing) => {
-          this.router.navigateByUrl('/Listings');
+          this.router.navigateByUrl('/listings');
         },
         error: (err) => (this.message = err),
       });
   }
 
   onSubmit() {
-    if (this.Listing != null) {
+    if (this.listing != null) {
       console.log('form submitted with ');
-      console.table(this.ListingForm.value);
-      this.updateListing(this.Listing);
+      console.table(this.listingForm.value);
+      this.updateListing(this.listing);
     } else {
       console.log('form submitted with ');
-      console.table(this.ListingForm.value);
-      this.addNewListing(this.ListingForm.value);
+      console.table(this.listingForm.value);
+      this.addNewListing(this.listingForm.value);
     }
   }
 }

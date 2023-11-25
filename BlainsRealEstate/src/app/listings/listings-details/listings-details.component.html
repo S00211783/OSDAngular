@@ -1,1 +1,20 @@
-<p>listings-details works!</p>
+<mat-card *ngIf="listing && !showForm">
+  <mat-card-header>
+    {{listing.name}}
+  </mat-card-header>
+  <mat-card-content>
+    <div>Address: {{listing.Address}}</div>
+    <div>Cost: {{listing.Cost}}</div>
+    <div>Bedrooms: {{listing.Bedrooms}}</div>
+    <div>Description: {{listing.Description}}</div>
+    <div>Type: {{listing.Type}}</div>
+    <div>Location: {{listing.Location}}</div>
+    <div>Agent ID: {{listing.AgentId}}</div>
+    <!-- Add other details for the remaining properties -->
+
+    <button mat-raised-button color="warn" (click)="deleteItem()">DELETE</button>
+    <button mat-raised-button color="primary" (click)="editListing()">Edit</button>
+  </mat-card-content>
+</mat-card>
+{{message}}
+<div *ngIf="showForm"><app-listing-form [listing]="listing"></app-listing-form></div>

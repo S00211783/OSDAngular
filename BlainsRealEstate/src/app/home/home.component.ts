@@ -20,9 +20,8 @@ export class HomeComponent implements OnInit {
     console.log('Property Type:', this.selectedType);
     // Add logic to perform the search based on user input
   }
-  createListing() {
-    // Implement the logic to navigate to the create listing page or show a modal
-    console.log('Navigate to create listing page or show modal');
+  createListing(){
+
   }
 
 }

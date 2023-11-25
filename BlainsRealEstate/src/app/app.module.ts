@@ -5,14 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { HomeComponent } from './home/home.component';
+import { ListingsModule } from './listings/listings.module';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
     ],
   imports: [
     BrowserModule,
@@ -20,8 +21,9 @@ import { MatSelectModule } from '@angular/material/select';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ListingsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

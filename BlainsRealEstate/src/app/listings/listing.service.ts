@@ -14,7 +14,7 @@ import { Listing } from './listing';
 })
 export class ListingService {
 
-  private dataUri = `${environment.apiUri}/Listings`;
+  private dataUri = `${environment.apiUri}/listings`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class ListingService {
     const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
     console.log(headers);
     return this.http
-      .get<Listing[]>(this.dataUri, { headers})
+      .get<Listing[]>(this.dataUri, {headers})
       .pipe(retry(3), catchError(this.handleError));
   }
   getListingById(id: string): Observable<Listing> {
