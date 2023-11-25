@@ -1,6 +1,5 @@
 export interface Listing {
   _id : string,
-  ListingId: Number,
   Cost:Number,
   Address: String,
   Bedrooms: Number,
