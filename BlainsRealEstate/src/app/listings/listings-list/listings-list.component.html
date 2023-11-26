@@ -1,8 +1,10 @@
-<!-- listings.component.html -->
-<a mat-raised-button color="accent" routerLink="/listings/form">
+<div class="addBtn">
+  <a mat-raised-button color="accent" routerLink="/listings/form" class="addBtn">
   <mat-icon matprefix>add</mat-icon>
   Add New Listing
 </a>
+</div>
+
 
 <div class="container responsive-grid">
   <div *ngFor='let listing of listings$ | async'>

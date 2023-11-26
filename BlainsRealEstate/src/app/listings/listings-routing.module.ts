@@ -5,6 +5,7 @@ import { ListingFormComponent } from './listings-form/listings-form.component';
 import { ListingsListComponent } from './listings-list/listings-list.component';
 
 const routes: Routes = [
+  { path: 'listings-list', component: ListingsListComponent },
   { path: 'listings', component: ListingsListComponent},
   {path: 'listings/details', component: ListingDetailsComponent},
   {path: 'listings/form', component: ListingFormComponent},

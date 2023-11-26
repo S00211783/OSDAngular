@@ -4,6 +4,30 @@
 
  .responsive-grid {
  display: grid;
- grid-template-columns: repeat(4, 1fr);
+ grid-template-columns: repeat(1, 1fr);
  gap: 24px;
  }
+ .addBtn{
+  text-align: center;
+  margin: 10px;
+ }
+ @media (max-width: 600px) {
+  /* Adjust styles for small screens */
+  .responsive-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center;
+    margin-right: 15px;
+    margin-left: -15PX; /* Center items horizontally */
+  }
+
+  mat-card {
+    width: 90%; /* Adjust card width for smaller screens */
+    margin: 10px; /* Add some spacing between cards */
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .responsive-grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% of the viewport height */
+  }
+  
+  mat-card {
+    width: 100%;
+    max-width: 600px; /* Adjust this as needed */
+  }
+  
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Adjust this as needed for spacing */
+  }
+  
+  mat-form-field {
+    width: 100%;
+    max-width: 400px; /* Adjust this as needed */
+    margin-bottom: 15px; /* Adjust this as needed for spacing */
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adjust this as needed for spacing */
+  }

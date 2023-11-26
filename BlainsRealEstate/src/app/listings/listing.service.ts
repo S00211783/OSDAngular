@@ -27,29 +27,45 @@ export class ListingService {
       .get<Listing[]>(this.dataUri, {headers})
       .pipe(retry(3), catchError(this.handleError));
   }
+  getListingsWithQuery(country: string, type: string): Observable<Listing[]> {
+    console.log('get Listings called');
+
+    const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
+    console.log(headers);
+    const params = {
+      location: country,
+      type: type
+    };
+
+    return this.http
+      .get<Listing[]>(this.dataUri, { headers, params })
+      .pipe(retry(3), catchError(this.handleError));
+  }
   getListingById(id: string): Observable<Listing> {
     return this.http
       .get<Listing>(`${this.dataUri}/${id}`)
       .pipe(retry(3), catchError(this.handleError));
   }
-  postListing(Listing: Listing): Observable<Listing> {
+  postListing(listing: Listing): Observable<Listing> {
+    const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
     return this.http
-      .post<Listing>(`${this.dataUri}`, Listing)
+      .post<Listing>(this.dataUri, listing, { headers })
       .pipe(retry(3), catchError(this.handleError));
   }
   deleteListing(id: string): Observable<Listing> {
+    const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
     return this.http
-      .delete<Listing>(`${this.dataUri}/${id}`)
+      .delete<Listing>(`${this.dataUri}/${id}`, { headers })
       .pipe(retry(3), catchError(this.handleError));
   }
-  updateListing(id: string, Listing: Listing): Observable<Listing> {
+  updateListing(id: string, listing: Listing): Observable<Listing> {
     console.log('subscribing to update/' + id);
-    let ListingURI: string = this.dataUri + '/' + id;
-    return this.http.put<Listing>(ListingURI, Listing)
-    .pipe(
-    catchError(this.handleError)
-    )
-    }
+    let listingURI: string = this.dataUri + '/' + id;
+    return this.http.put<Listing>(listingURI, listing)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

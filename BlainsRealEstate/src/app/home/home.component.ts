@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListingService } from '../listings/listing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,22 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-  country: string = '';
+  message: any;
+  location: string = '';
   selectedType: string = '';
 
-  search() {
-    // Implement your search logic based on 'country' and 'selectedType'
-    console.log('Country:', this.country);
+  constructor(private listingService: ListingService, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  public search() {
+    console.log('Location:', this.location);
     console.log('Property Type:', this.selectedType);
-    // Add logic to perform the search based on user input
+    
+    // Check if either location or selectedType is provided
+    if (this.location || this.selectedType) {
+      // Use navigateByUrl with queryParams to pass parameters
+      this.router.navigateByUrl(`/listings-list?location=${this.location}&type=${this.selectedType}`);
+    }
+    else{
+      this.router.navigateByUrl('/listings');
+    }
   }
-  createListing(){
-
-  }
-
 }

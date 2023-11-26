@@ -10,7 +10,15 @@ import { ListingService } from '../listing.service';
   styleUrls: ['./listings-form.component.css'],
 })
 export class ListingFormComponent implements OnInit {
-  listingForm: FormGroup = new FormGroup({});
+  listingForm: FormGroup = new FormGroup({
+    Cost: new FormControl(this.listing?.Cost, [Validators.required]),
+    Address: new FormControl(this.listing?.Address, [Validators.required]),
+    Bedrooms: new FormControl(this.listing?.Bedrooms, [Validators.required]),
+    Description: new FormControl(this.listing?.Description, [Validators.required]),
+    Type: new FormControl(this.listing?.Type, [Validators.required]),
+    Location: new FormControl(this.listing?.Location, [Validators.required]),
+    AgentId: new FormControl(this.listing?.AgentId, [Validators.required]),
+  });
 
   message: string = '';
 
@@ -34,7 +42,7 @@ export class ListingFormComponent implements OnInit {
 
   addNewListing(newListing: Listing): void {
     console.log('adding new Listing ' + JSON.stringify(newListing));
-    this.ListingService.postListing({ ...newListing }).subscribe({
+    this.ListingService.postListing({ ... newListing }).subscribe({
       next: (Listing) => {
         this.router.navigateByUrl('/listings/' + Listing._id);
       },
@@ -42,12 +50,12 @@ export class ListingFormComponent implements OnInit {
     });
   }
 
-  updateListing(Listing: Listing): void {
+  updateListing(listing: Listing): void {
     console.log('updating Listing' + JSON.stringify(this.listing));
     this.ListingService
-      .updateListing(Listing._id, this.listingForm.value)
+      .updateListing(listing._id, this.listingForm.value)
       .subscribe({
-        next: (Listing) => {
+        next: (updatedListing) => {
           this.router.navigateByUrl('/listings');
         },
         error: (err) => (this.message = err),

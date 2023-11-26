@@ -4,50 +4,50 @@
       <mat-form-field appearance="outline">
         <mat-error *ngIf="listingForm.get('Address')?.hasError('required')">Address is required</mat-error>
         <mat-label>Address</mat-label>
-        <input matInput placeholder="123 Main Street" formControlName="Address">
+        <input matInput placeholder="123 Main Street" formControlName="Address" name="Address">
         <mat-icon matSuffix>location_on</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-error *ngIf="listingForm.get('Cost')?.hasError('required')">Cost is required</mat-error>
         <mat-label>Cost</mat-label>
-        <input matInput placeholder="100000" formControlName="Cost">
+        <input matInput placeholder="100000" formControlName="Cost" name="Cost">
         <mat-icon matSuffix>attach_money</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-error *ngIf="listingForm.get('Bedrooms')?.hasError('required')">Bedrooms is required</mat-error>
         <mat-label>Bedrooms</mat-label>
-        <input matInput placeholder="3" formControlName="Bedrooms">
+        <input matInput placeholder="3" formControlName="Bedrooms" name="Bedrooms">
         <mat-icon matSuffix>king_bed</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Enter description" formControlName="Description"></textarea>
+        <textarea matInput placeholder="Enter description" formControlName="Description" name="Description"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Type</mat-label>
-        <input matInput placeholder="Apartment, House, etc." formControlName="Type">
+        <input matInput placeholder="Buy | Rent" formControlName="Type" name="Type">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Location</mat-label>
-        <input matInput placeholder="City, Suburb, etc." formControlName="Location">
+        <input matInput placeholder="City, Suburb, etc." formControlName="Location" name="Location">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-error *ngIf="listingForm.get('AgentId')?.hasError('required')">Agent ID is required</mat-error>
         <mat-label>Agent ID</mat-label>
-        <input matInput placeholder="123" formControlName="AgentId">
+        <input matInput placeholder="123" formControlName="AgentId" name="AgentId">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-card-content>
 
     <mat-card-actions>
       <button mat-raised-button type="submit" [disabled]="listingForm.invalid">Submit</button>
-      <a mat-raised-button href="/listings">Cancel</a>
+      <a mat-raised-button [routerLink]="'/listings'">Cancel</a>
     </mat-card-actions>
   </form>
 </mat-card>
