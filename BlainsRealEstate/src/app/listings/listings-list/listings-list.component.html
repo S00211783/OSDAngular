@@ -1,5 +1,5 @@
 <div class="addBtn">
-  <a mat-raised-button color="accent" routerLink="/listings/form" class="addBtn">
+  <a *ngIf="auth.user$ | async as user" mat-raised-button color="accent" routerLink="/listings/form" class="addBtn">
   <mat-icon matprefix>add</mat-icon>
   Add New Listing
 </a>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ListingService } from '../listings/listing.service';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   location: string = '';
   selectedType: string = '';
 
-  constructor(private listingService: ListingService, private router: Router) {}
+  constructor(private listingService: ListingService, private router: Router,public auth: AuthService) {}
 
   ngOnInit(): void {}
 

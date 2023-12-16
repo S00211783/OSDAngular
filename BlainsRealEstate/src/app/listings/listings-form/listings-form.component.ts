@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Listing } from '../listing';
 import { ListingService } from '../listing.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-listing-form',
@@ -24,7 +25,7 @@ export class ListingFormComponent implements OnInit {
 
   @Input() listing?: Listing;
 
-  constructor(private ListingService: ListingService, private router: Router) {}
+  constructor(private ListingService: ListingService, private router: Router, public auth:AuthService) {}
 
   ngOnInit(): void {
     if (this.listing != null) {

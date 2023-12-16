@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Listing } from '../listing';
 import { ListingService } from '../listing.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-listing-details',
@@ -22,7 +23,8 @@ export class ListingDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private listingService: ListingService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public auth:AuthService
   ) {}
 
   ngOnInit(): void {

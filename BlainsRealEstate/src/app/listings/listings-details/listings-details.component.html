@@ -12,8 +12,8 @@
     <div>Agent ID: {{listing.AgentId}}</div>
     <!-- Add other details for the remaining properties -->
 
-    <button mat-raised-button color="warn" (click)="deleteItem()" class="btn">DELETE</button>
-    <button mat-raised-button color="primary" (click)="editListing()" class="btn">Edit</button>
+    <button *ngIf="auth.user$ | async as user" mat-raised-button color="warn" (click)="deleteItem()" class="btn">DELETE</button>
+    <button *ngIf="auth.user$ | async as user" mat-raised-button color="primary" (click)="editListing()" class="btn">Edit</button>
   </mat-card-content>
 </mat-card>
 {{message}}

@@ -24,7 +24,7 @@
 </div>
 
 <!-- Message with Create Listing Button -->
-<div class="create-listing-message">
+<div *ngIf="auth.user$ | async as user" class="create-listing-message">
   <h1>Want to create a listing?</h1>
   <button mat-raised-button color="accent" [routerLink]="['/listings/form']">Click here</button>
 </div>
