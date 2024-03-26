@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Listing } from '../listing';
 import { ListingService } from '../listing.service';
@@ -11,14 +11,14 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./listings-form.component.css'],
 })
 export class ListingFormComponent implements OnInit {
-  listingForm: FormGroup = new FormGroup({
-    Cost: new FormControl(this.listing?.Cost, [Validators.required]),
-    Address: new FormControl(this.listing?.Address, [Validators.required]),
-    Bedrooms: new FormControl(this.listing?.Bedrooms, [Validators.required]),
-    Description: new FormControl(this.listing?.Description, [Validators.required]),
-    Type: new FormControl(this.listing?.Type, [Validators.required]),
-    Location: new FormControl(this.listing?.Location, [Validators.required]),
-    AgentId: new FormControl(this.listing?.AgentId, [Validators.required]),
+  listingForm: UntypedFormGroup = new UntypedFormGroup({
+    Cost: new UntypedFormControl(this.listing?.Cost, [Validators.required]),
+    Address: new UntypedFormControl(this.listing?.Address, [Validators.required]),
+    Bedrooms: new UntypedFormControl(this.listing?.Bedrooms, [Validators.required]),
+    Description: new UntypedFormControl(this.listing?.Description, [Validators.required]),
+    Type: new UntypedFormControl(this.listing?.Type, [Validators.required]),
+    Location: new UntypedFormControl(this.listing?.Location, [Validators.required]),
+    AgentId: new UntypedFormControl(this.listing?.AgentId, [Validators.required]),
   });
 
   message: string = '';
@@ -29,14 +29,14 @@ export class ListingFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.listing != null) {
-      this.listingForm = new FormGroup({
-        Cost: new FormControl(this.listing?.Cost, [Validators.required]),
-        Address: new FormControl(this.listing?.Address, [Validators.required]),
-        Bedrooms: new FormControl(this.listing?.Bedrooms, [Validators.required]),
-        Description: new FormControl(this.listing?.Description, [Validators.required]),
-        Type: new FormControl(this.listing?.Type, [Validators.required]),
-        Location: new FormControl(this.listing?.Location, [Validators.required]),
-        AgentId: new FormControl(this.listing?.AgentId, [Validators.required]),
+      this.listingForm = new UntypedFormGroup({
+        Cost: new UntypedFormControl(this.listing?.Cost, [Validators.required]),
+        Address: new UntypedFormControl(this.listing?.Address, [Validators.required]),
+        Bedrooms: new UntypedFormControl(this.listing?.Bedrooms, [Validators.required]),
+        Description: new UntypedFormControl(this.listing?.Description, [Validators.required]),
+        Type: new UntypedFormControl(this.listing?.Type, [Validators.required]),
+        Location: new UntypedFormControl(this.listing?.Location, [Validators.required]),
+        AgentId: new UntypedFormControl(this.listing?.AgentId, [Validators.required]),
       });
     }
   }
