@@ -1,6 +1,7 @@
 <mat-toolbar>
   <span>Blain's Real Estate App</span>
   <button mat-button routerLink="/">Home</button>
+  <button mat-button routerLink="/calculator">Mortgage Calculator</button>
   <button *ngIf="auth.user$ | async as user" mat-button routerLink="/profile">Profile</button>
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <button mat-button (click)="handleLogOut()">

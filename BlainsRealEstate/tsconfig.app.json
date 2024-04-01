@@ -1,8 +1,9 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "target": "ES2022", // Set ECMAScript target version to ES2022
+    "useDefineForClassFields": false, // Do not use define for class fields
     "types": []
   },
   "files": [

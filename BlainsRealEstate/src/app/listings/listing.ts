@@ -7,4 +7,5 @@ export interface Listing {
   Type: String,
   Location: String,
   AgentId: Number,
+  ImageURL : String,
 }

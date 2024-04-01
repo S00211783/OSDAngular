@@ -1,4 +1,8 @@
+body{
+  height: auto;
+}
 :host {
+  background-color: #affeee;
     display: flex;
     justify-content: center;
     align-items: center;

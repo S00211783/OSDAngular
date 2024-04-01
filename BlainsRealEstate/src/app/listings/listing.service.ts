@@ -48,9 +48,8 @@ export class ListingService {
   }
   postListing(listing: Listing): Observable<Listing> {
     const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
-    return this.http
-      .post<Listing>(this.dataUri, listing, { headers })
-      .pipe(retry(3), catchError(this.handleError));
+    return this.http.post<Listing>(this.dataUri, listing, { headers })
+      .pipe(catchError(this.handleError));
   }
   deleteListing(id: string): Observable<Listing> {
     const headers = new HttpHeaders().set('X-API-key', 'matthewblain');
@@ -64,6 +63,14 @@ export class ListingService {
     return this.http.put<Listing>(listingURI, listing)
       .pipe(
         catchError(this.handleError)
+      );
+  }
+  getTopFiveListings(): Observable<Listing[]> {
+    return this.http
+      .get<Listing[]>(`${this.dataUri}/top`)
+      .pipe(
+        retry(3), // Retry the request up to 3 times in case of failure
+        catchError(this.handleError) // Handle errors
       );
   }
   private handleError(error: HttpErrorResponse) {

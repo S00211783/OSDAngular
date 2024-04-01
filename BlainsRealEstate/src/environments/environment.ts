@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUri:'https://localhost:8080/api/v1',
+  apiUri:'http://localhost:3000/api/v1',
   auth0:
   {
     domain: 'dev-yv5jum6b55awe8df.eu.auth0.com',
