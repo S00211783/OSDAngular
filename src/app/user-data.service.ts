@@ -24,35 +24,6 @@ export class UserDataService {
     this.cookieService.set('userData', userDataJson);
   }
 
-  addFavoriteListing(listingId: string): Observable<any> {
-    return this.getUserData().pipe(
-      map(userData => {
-        if (!userData.favoriteListings) {
-          userData.favoriteListings = [];
-        }
-        if (!userData.favoriteListings.includes(listingId)) {
-          userData.favoriteListings.push(listingId);
-          this.updateUserData(userData);
-        }
-        return userData;
-      }),
-      catchError(this.handleError<any>('addFavoriteListing'))
-    );
-  }
-
-  removeFavoriteListing(listingId: string): Observable<any> {
-    return this.getUserData().pipe(
-      map(userData => {
-        if (userData.favoriteListings) {
-          userData.favoriteListings = userData.favoriteListings.filter((id: string) => id !== listingId);
-          this.updateUserData(userData);
-        }
-        return userData;
-      }),
-      catchError(this.handleError<any>('removeFavoriteListing'))
-    );
-  }
-
   addSavedQuote(quote: any): Observable<any> {
     return this.getUserData().pipe(
       map(userData => {
